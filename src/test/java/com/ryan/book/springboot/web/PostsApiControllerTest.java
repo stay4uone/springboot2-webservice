@@ -14,6 +14,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.boot.web.server.LocalServerPort;
 
@@ -39,6 +40,7 @@ public class PostsApiControllerTest {
     }
 
     @Test
+    @WithMockUser(roles="USER")
     public void testRegisterPost() throws Exception{
         //given
         String title = "title";
@@ -63,6 +65,7 @@ public class PostsApiControllerTest {
     }
 
     @Test
+    @WithMockUser(roles="USER")
     public   void testModifyPosts() throws Exception{
         //given
         Posts savePosts = postsRepository.save(Posts.builder()
